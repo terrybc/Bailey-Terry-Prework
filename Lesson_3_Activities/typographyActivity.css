@@ -1,0 +1,15 @@
+p {
+  font-family: Lucida Sans Unicode;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.fontBig {
+  font-size: 24px;
+}
+
+.lineBig {
+  line-height: 50px;
+}
