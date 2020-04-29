@@ -1,4 +1,17 @@
 h1 {
     color: red;
     background-color: black;
+    font-family: Montserrat, sans-serif;
+}
+
+h2 {
+    color: green;
+    background-color: black;
+    font-family: Playfair Display, serif;
+}
+
+.fab_fa-battle-net {
+    display: block;
+    height: 100px;
+    width: 100px;
 }
