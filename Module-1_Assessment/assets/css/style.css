@@ -1,0 +1,46 @@
+.container {
+    background-color: #ffffff;
+    border-color: #dddddd;
+    font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
+    margin-top: 50px;
+}
+
+#navName {
+    background-color: #4aaaa5;
+    color: #ffffff;
+    padding: 15px;
+    margin-left: 180px;
+    bottom: 0;
+    position: absolute;
+}
+
+#navItems {
+    margin-left: 1100px;
+}
+
+#colored-header {
+    padding-top: 10px;
+    color: #4aaaa5;
+    font-family: 'Georgia', Times, Times New Roman, serif;
+}
+
+#navigation {
+    background-color: #ffffff;
+    border-color: #cccccc;
+    font-family: 'Georgia', Times, Times New Roman, serif;
+}
+
+#profile-picture {
+    width: 180px;
+    height: 200px;
+}
+
+footer {
+    background-color: #666666;
+    padding: 12px;
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    border-top: 3.5pt solid #4aaaa5;
+}
