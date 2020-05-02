@@ -3,20 +3,20 @@
     border-color: #dddddd;
     font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
     margin: 50px;
-    min-width: 770px;
+    width: 960px;
 }
 
 #navName {
     background-color: #4aaaa5;
     color: #ffffff;
     padding: 15px;
-    margin-left: 12rem;
+    margin-left: 12%;
     bottom: 0;
     position: absolute;
 }
 
 #navItems {
-    margin-left: 70rem;
+    margin-left: 74%;
 }
 
 #colored-header {
@@ -30,11 +30,51 @@
     border-color: #cccccc;
     font-family: 'Georgia', Times, Times New Roman, serif;
     min-height: 59px;
+    width: 100%;
 }
 
 #profile-picture {
-    width: 180px;
-    height: 200px;
+    width: 100%;
+    height: 100%;
+}
+
+#portfolio-image {
+    width: 100%;
+    height: 80%;
+}
+ 
+.bottom-center {
+    position: relative;
+    bottom: 65px;
+    padding: 10px;
+    background-color: #4aaaa5;
+    width: 100%;
+    padding-left: 40%;
+}
+
+#name-field {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#email-field {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#message-area {
+    width: 100%;
+    height: 50%;
+}
+
+#submit-button {
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    background-color: #4aaaa5;
+    border: 2pt solid #4aaaa5;
 }
 
 footer {
@@ -45,22 +85,8 @@ footer {
     border-top: 3.5pt solid #4aaaa5;
 }
 
-@media screen and (max-width: 1380px) {
-    #navItems {
-        margin-left: 55rem;
-    }
-    #navName {
-        margin-left: 10rem;
-    }
-}
 
 @media screen and (max-width: 1210px) {
-    #navItems {
-        margin-left: 40rem;
-    }
-    #navName {
-        margin-left: 5rem;
-    }
     #profile-picture {
         width: 150px;
         height: 170px;
@@ -68,12 +94,6 @@ footer {
 }
 
 @media screen and (max-width: 992px) {
-    #navItems {
-        margin-left: 30rem;
-    }
-    #navName {
-        margin-left: 2rem;
-    }
     #profile-picture {
         width: 120px;
         height: 150px;
