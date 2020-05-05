@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Loops 2</title>
+</head>
+<style>
+    button {
+        margin-left: 40%;
+        margin-top: 18%;
+        border: 2pt solid black;
+        background-color: black;
+        color: red;
+        height: 150px;
+        width: 250px;
+        font-size: x-large;
+    }
+
+    body {
+        background-color: darkgray;
+    }
+</style>
+<body>
+    <script>
+        function getUserInfo() {
+            const nameList = [];
+            const aNames = [];
+            const num = prompt("Enter the number of students in your class");
+            for (i = 0; i < num; i++) {
+                nameList.push(prompt("Enter a name of a student"));
+            }
+            for(i = 0; i < num; i++) {
+                const j = i+1;
+                console.log('Name ' + j + ' is: ' + nameList[i]);
+            }
+            for (i = 0; i < num; i++) {
+                const name = nameList[i].split('');
+                for (j = 0; j < name.length; j++) {
+                    if (name[j] === 'a') {
+                        aNames.push(nameList[i]);
+                        break;
+                    }
+                }
+            }
+            for (i = 0; i < aNames.length; i++) {
+                console.log('Name with A: ' + aNames[i]);
+            }
+            alert('Check the Console');
+        }
+    </script>
+
+    <button onclick="getUserInfo()">Click Me!</button>
+</body>
+</html>
