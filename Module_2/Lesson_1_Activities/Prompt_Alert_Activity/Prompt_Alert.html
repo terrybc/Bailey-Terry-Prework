@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Prompts & Alerts</title>
+</head>
+<style>
+    button {
+        margin-left: 40%;
+        margin-top: 18%;
+        border: 2pt solid black;
+        background-color: black;
+        color: red;
+        height: 150px;
+        width: 250px;
+        font-size: x-large;
+    }
+
+    body {
+        background-color: darkgray;
+    }
+</style>
+<body>
+    <script>
+        function getUserInfo() {
+            const name = prompt('Please enter your name');
+            const login = prompt('Please enter a username');
+            const pass = prompt('Please enter a password');
+            const retVal = confirm('Would you like to save your username and password');
+            if (retVal == true) {
+                alert('Credentials have been saved');
+            }
+            if (name == null || login == null || pass == null) {
+                alert('All right, then. Keep your secrets...')
+            } else {
+                alert('Hello ' + name + '!\n' + 'Your username is: ' + login + '.\n' + 'Your password is: ' + pass + '.');
+            }
+        }
+    </script>
+
+    <button onclick="getUserInfo()">Click Me!</button>
+</body>
+</html>
