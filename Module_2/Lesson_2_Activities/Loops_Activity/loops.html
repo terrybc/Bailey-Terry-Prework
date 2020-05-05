@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Arrays</title>
+</head>
+<style>
+    button {
+        margin-left: 40%;
+        margin-top: 18%;
+        border: 2pt solid black;
+        background-color: black;
+        color: red;
+        height: 150px;
+        width: 250px;
+        font-size: x-large;
+    }
+
+    body {
+        background-color: darkgray;
+    }
+</style>
+<body>
+    <script>
+        function getUserInfo() {
+            for (i = 5; i < 10; i++) {
+                alert(i);
+            }
+            for (i = 0; i < 5; i++) {
+                let j = i+1;
+                alert('piggywoo x' + j);
+            }
+            for (i = 11; i > 1; i--) {
+                let j = i-1;
+                alert(j);
+            }
+        }
+    </script>
+
+    <button onclick="getUserInfo()">Click Me!</button>
+</body>
+</html>
