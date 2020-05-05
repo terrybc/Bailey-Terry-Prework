@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Arrays</title>
+</head>
+<style>
+    button {
+        margin-left: 40%;
+        margin-top: 18%;
+        border: 2pt solid black;
+        background-color: black;
+        color: red;
+        height: 150px;
+        width: 250px;
+        font-size: x-large;
+    }
+
+    body {
+        background-color: darkgray;
+    }
+</style>
+<body>
+    <script>
+        function getUserInfo() {
+            const students = [];
+            const studentNames = prompt('Please enter five names seperated by commas');
+            const index = prompt('Please enter a number 0-4');
+            const name = prompt('Please enter a name');
+            let inList = false;
+            const studentList = studentNames.split(',');
+            for (i = 0; i < studentList.length; i++) {
+                students.push(studentList[i].trim);
+                if (students[i] === name) {
+                    inList = true;
+                }
+            }
+            if (inList) {
+                alert('The second name in the list is: ' + students[1] + '.\nThe name at the index you chose is: ' + students[index] +
+                    '.\nThe name you entered: ' + name + ' is in the list.')
+            } else {
+                alert('The second name in the list is: ' + students[1] + '.\nThe name at the index you chose is: ' + students[index] +
+                    '.\nThe name you entered: ' + name + ' is not in the list.')
+            }
+        }
+    </script>
+
+    <button onclick="getUserInfo()">Click Me!</button>
+</body>
+</html>
