@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Short Circuit</title>
+</head>
+<style>
+    button {
+        margin-left: 40%;
+        margin-top: 18%;
+        border: 2pt solid black;
+        background-color: black;
+        color: red;
+        height: 150px;
+        width: 250px;
+        font-size: x-large;
+    }
+
+    body {
+        background-color: darkgray;
+    }
+</style>
+<body>
+    <script>
+        function getUserInfo() {
+            const user = prompt('Please enter a username');
+            const pass = prompt('Please enter a password');
+            if (user === "admin" && pass === "1234") {
+                alert('Welcome to the admin page');
+            } else if (user === "average joe" && pass === "jsRocks") {
+                alert('Welcome to the user landing page')
+            } else {
+                alert('Invalid username and passwrod, refresh the page to try again');
+            }
+        }
+    </script>
+
+    <button onclick="getUserInfo()">Click Me!</button>
+</body>
+</html>
