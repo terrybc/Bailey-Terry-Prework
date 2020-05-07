@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Objects</title>
+</head>
+<style>
+    button {
+        margin-left: 40%;
+        margin-top: 18%;
+        border: 2pt solid black;
+        background-color: black;
+        color: red;
+        height: 150px;
+        width: 250px;
+        font-size: x-large;
+    }
+
+    body {
+        background-color: darkgray;
+    }
+</style>
+<body>
+    <script>
+        const contacts = {
+            dan: "555-330-2289",
+            dante: "555-660-2295",
+            dash: "555-837-8275",
+            cheyanne: "555-510-5395",
+            bailey: "555-238-4537",
+            vicki: "555-238-3058"
+        }
+        const dash = {
+            address: "2995 n 69th st",
+            phone: "555-837-8275",
+            state: "Wisconsin"
+        }
+        const cheyanne = {
+            address: "1121 n 44th st",
+            phone: "555-510-5395",
+            state: "Wisconsin"
+        }
+        const bailey = {
+            address: "1121 n 44th st",
+            phone: "555-238-4537",
+            state: "Wisconsin"
+        }
+        const vicki = {
+            address: "5720 w wisconsin ave",
+            phone: "555-238-3058",
+            state: "Wisconsin"
+        }
+        function getName() {
+            console.log(contacts)
+            console.log(contacts.dante)
+            const prop = prompt('Enter a name from the list of contacts');
+            switch (prop) {
+                case "dan":
+                    console.log(contacts.dan);
+                    break;
+                case "dante":
+                    console.log(contacts.dante);
+                    break;
+                case "dash":
+                    console.log(dash.phone);
+                    console.log(dash.address);
+                    break;
+                case "cheyanne":
+                    console.log(cheyanne.phone);
+                    console.log(cheyanne.address);
+                    break;
+                case "bailey":
+                    console.log(bailey.phone);
+                    console.log(bailey.address);
+                    break;
+                case "vicki":
+                    console.log(vicki.phone);
+                    console.log(vicki.address);
+                    break;
+                default:
+                    console.log('You did not enter a name on the list');
+                    break;
+            }
+        }
+    </script>
+
+    <button onclick="getName()">Click Me!</button>
+</body>
+</html>
