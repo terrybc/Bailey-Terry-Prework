@@ -1,0 +1,49 @@
+body {
+    background-image: url('../images/ocean-background.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+table {
+    width: 100%;
+    border: 2pt dashed navy;
+    height: 100%;
+}
+
+tr, th, td, p {
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+
+p {
+    font-size: 18pt;
+}
+
+td {
+    vertical-align: middle;
+    box-sizing: unset;
+}
+
+th {
+    font-size: 24pt;
+}
+
+#title {
+    text-align: center;
+    font-size: 48pt;
+    color: mediumblue;
+}
+
+#theme {
+    text-align: center;
+    font-size: 36pt;
+    color: mediumblue;
+}
+
+#answer-img {
+    background-color: none;
+    height: 40%;
+    width: 40%;
+}
