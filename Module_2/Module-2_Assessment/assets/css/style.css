@@ -26,8 +26,11 @@ td {
     box-sizing: unset;
 }
 
-th {
+#caption {
     font-size: 24pt;
+    color: oldlace;
+    text-align: center;
+    caption-side: top;
 }
 
 #title {
@@ -42,8 +45,7 @@ th {
     color: mediumblue;
 }
 
-#answer-img {
-    background-color: none;
+img {
     height: 40%;
     width: 40%;
 }
