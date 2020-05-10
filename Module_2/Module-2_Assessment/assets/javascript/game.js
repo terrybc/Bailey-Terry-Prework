@@ -5,7 +5,7 @@ const chosenInfo = {
     tries: 12,
     spaces: [],
     wins: 0
-}
+};
 
 const sharks = {
     one: "Great White",
@@ -23,12 +23,27 @@ const sharks = {
     thirteen: "White Tip",
     fourteen: "Leopard",
     fifteen: "Zebra",
+};
+
+if (chosenInfo.wins === 0) {
+    gameSet();
 }
 
-function getRandomShark() {
-    const max = 15;
-    const min = 1;
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+function gameSet() {
+    chosenInfo.spaces = [];
+    chosenInfo.tries = 12;
+    chosenInfo.usedLetters = [];
+    const {name, length} = getShark();
+    chosenInfo.sharkName = name;
+    chosenInfo.nameLength = length;
+    for (i = 0; i < length; i++) {
+        if (name.split('')[i] !== ' ') {
+            chosenInfo.spaces.push('_ ');
+        } else {
+            chosenInfo.spaces.push(' ');
+        }
+    }
+    document.querySelector('#word').innerHTML = chosenInfo.spaces.join('');
 }
 
 function getShark() {
@@ -87,103 +102,18 @@ function getShark() {
     return {name, length};
 }
 
-function gameSet(event) {
-    chosenInfo.spaces = [];
-    const {name, length} = getShark();
-    chosenInfo.sharkName = name;
-    chosenInfo.nameLength = length;
-    const letters = '^[A-Za-z]+$';
-    for (i = 0; i < length; i++) {
-        if (name.split('')[i] !== ' ') {
-            chosenInfo.spaces.push('_ ')
-        }
-    }
-    document.querySelector('#word').innerHTML = chosenInfo.spaces.join('');
+function getRandomShark() {
+    const max = 15;
+    const min = 1;
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function winner() {
-    chosenInfo.wins += 1;
-    document.querySelector('#caption').innerHTML = chosenInfo.sharkName;
-    document.querySelector('#wins').innerHTML = chosenInfo.wins;
-    switch(chosenInfo.sharkName) {
-        case "Great White":
-            document.querySelector('#answer-img').innerHTML = "<img src=" + "../images/sharks/great-white.jpg" + ">";
-            break; 
-        case "Thresher":
-            document.querySelector('#answer-img').innerHTML = "<img src=" + "../images/sharks/thresher.jpg" + ">";
-            break; 
-        case "Great Hammerhead":
-            document.querySelector('#answer-img').innerHTML = "<img src=" + "../images/sharks/great-hammerhead.jpg" + ">";
-            break; 
-        case "Tiger":
-            document.querySelector('#answer-img').innerHTML = "<img src=" + "../images/sharks/tiger.png" + ">";
-            break; 
-        case "Bull":
-            document.querySelector('#answer-img').innerHTML = "<img src=" + "../images/sharks/bull.jpg" + ">";
-            break; 
-        case "Whale":
-            document.querySelector('#answer-img').innerHTML = "<img src=" + "../images/sharks/whale.jpg" + ">";
-            break; 
-        case "Blue":
-            document.querySelector('#answer-img').innerHTML = "<img src=" + "../images/sharks/blue.jpg" + ">";
-            break; 
-        case "Cookiecutter":
-            document.querySelector('#answer-img').innerHTML = "<img src=" + "../images/sharks/cookiecutter.jpg" + ">";
-            break; 
-        case "Mako":
-            document.querySelector('#answer-img').innerHTML = "<img src=" + "../images/sharks/mako.jpg" + ">";
-            break; 
-        case "Nurse":
-            document.querySelector('#answer-img').innerHTML = "<img src=" + "../images/sharks/nurse.jpg" + ">";
-            break; 
-        case "Reef":
-            document.querySelector('#answer-img').innerHTML = "<img src=" + "../images/sharks/reef.jpg" + ">";
-            break; 
-        case "Black Tip":
-            document.querySelector('#answer-img').innerHTML = "<img src=" + "../images/sharks/black-tip.jpg" + ">";
-            break; 
-        case "White Tip":
-            document.querySelector('#answer-img').innerHTML = "<img src=" + "../images/sharks/white-tip.jpg" + ">";
-            break; 
-        case "Leopard":
-            document.querySelector('#answer-img').innerHTML = "<img src=" + "../images/sharks/Leopard.jpg" + ">";
-            break; 
-        case "Zebra":
-            document.querySelector('#answer-img').innerHTML = "<img src=" + "../images/sharks/zebra.jpg" + ">";
-            break; 
-
-    }
-}
-
-function fillWord(letter) {
-    chosenInfo.usedLetters.push(letter);
-    if (chosenInfo.sharkName.includes(letter)) {
-        const indecies = [];
-        for (i = 0; i < chosenInfo.sharkName.length; i++) {
-            if (chosenInfo.sharkName.split('')[i] === letter) {
-                indecies.push(i)
-            }
-        }
-        for (i = 0; i < chosenInfo.sharkName.length; i++) {
-            for(j = 0; j < indecies.length; j++) {
-                if(i === indecies[j]) {
-                    chosenInfo.spaces[i] = letter;
-                }
-            }
-
-        }
-        document.querySelector('#word').innerHTML = chosenInfo.spaces.join('');
-        if (document.querySelector('#word').innerHTML === chosenInfo.sharkName) {
-            winner();
-        }
-    } else {
-        chosenInfo.tries -= 1;
-    }    
-    document.querySelector('#letters').innerHTML = chosenInfo.usedLetters;
-    document.querySelector('#guesses').innerHTML = chosenInfo.tries;
-}
+document.addEventListener('keyup', continueGame);
 
 function continueGame(event) {
+    if (chosenInfo.wins !== 0 && document.querySelector('#word').innerHTML === chosenInfo.sharkName) {
+        gameSet();
+    }
     switch (event.key) {
         case 'a':
             if (!chosenInfo.usedLetters.includes('a') && chosenInfo.tries > 0) {
@@ -318,6 +248,105 @@ function continueGame(event) {
     }
 }
 
-document.addEventListener('mouseenter', gameSet);
-document.addEventListener('keyup', continueGame);
+function fillWord(letter) {
+    if (chosenInfo.sharkName.includes(letter.toUpperCase()) ||
+         chosenInfo.sharkName.includes(letter.toLowerCase())) {
+        const indecies = [];
+        let word2 = 0;
+        const name = chosenInfo.sharkName.split('');
+        for (i = 0; i < chosenInfo.sharkName.length; i++) {
+            if (name[i].toLowerCase() === letter) {
+                indecies.push(i);
+            } else if (name[i] === ' ') {
+                word2 = i+1;
+            }
+        }
+        for (i = 0; i < chosenInfo.sharkName.length; i++) {
+            for(j = 0; j < indecies.length; j++) {
+                if(i === indecies[j]) {
+                    if (i === 0) {
+                        chosenInfo.spaces[i] = letter.toUpperCase();
+                    } else if (i === word2) {
+                        chosenInfo.spaces[i] = letter.toUpperCase();
+                    } else {
+                        chosenInfo.spaces[i] = letter;
+                    }
+                }
+            }
 
+        }
+        document.querySelector('#word').innerHTML = chosenInfo.spaces.join('');
+        if (document.querySelector('#word').innerHTML === chosenInfo.sharkName) {
+            winner();
+        }
+    } else {
+        chosenInfo.tries -= 1;
+        if (chosenInfo.tries === 0) {
+            loser();
+        }
+    }    
+    chosenInfo.usedLetters.push(letter);
+    document.querySelector('#letters').innerHTML = chosenInfo.usedLetters;
+    document.querySelector('#guesses').innerHTML = chosenInfo.tries;
+}
+
+function winner() {
+    chosenInfo.wins += 1;
+    document.querySelector('#caption').innerHTML = chosenInfo.sharkName + " Shark!\nPress another letter to start the next word.";
+    document.querySelector('#wins').innerHTML = chosenInfo.wins;
+    const sound = new Audio('assets/sound/jaws_boat.wav');
+    sound.play();
+    switch(chosenInfo.sharkName) {
+        case "Great White":
+            document.querySelector('#answer-img').innerHTML = "<img src=" + "assets/images/sharks/great-white.jpg" + ">";
+            break; 
+        case "Thresher":
+            document.querySelector('#answer-img').innerHTML = "<img src=" + "assets/images/sharks/thresher.jpg" + ">";
+            break; 
+        case "Great Hammerhead":
+            document.querySelector('#answer-img').innerHTML = "<img src=" + "assets/images/sharks/great-hammerhead.jpg" + ">";
+            break; 
+        case "Tiger":
+            document.querySelector('#answer-img').innerHTML = "<img src=" + "assets/images/sharks/tiger.png" + ">";
+            break; 
+        case "Bull":
+            document.querySelector('#answer-img').innerHTML = "<img src=" + "assets/images/sharks/bull.jpg" + ">";
+            break; 
+        case "Whale":
+            document.querySelector('#answer-img').innerHTML = "<img src=" + "assets/images/sharks/whale.jpg" + ">";
+            break; 
+        case "Blue":
+            document.querySelector('#answer-img').innerHTML = "<img src=" + "assets/images/sharks/blue.jpg" + ">";
+            break; 
+        case "Cookiecutter":
+            document.querySelector('#answer-img').innerHTML = "<img src=" + "assets/images/sharks/cookiecutter.jpg" + ">";
+            break; 
+        case "Mako":
+            document.querySelector('#answer-img').innerHTML = "<img src=" + "assets/images/sharks/mako.jpg" + ">";
+            break; 
+        case "Nurse":
+            document.querySelector('#answer-img').innerHTML = "<img src=" + "assets/images/sharks/nurse.jpg" + ">";
+            break; 
+        case "Reef":
+            document.querySelector('#answer-img').innerHTML = "<img src=" + "assets/images/sharks/reef.jpg" + ">";
+            break; 
+        case "Black Tip":
+            document.querySelector('#answer-img').innerHTML = "<img src=" + "assets/images/sharks/black-tip.jpg" + ">";
+            break; 
+        case "White Tip":
+            document.querySelector('#answer-img').innerHTML = "<img src=" + "assets/images/sharks/white-tip.jpg" + ">";
+            break; 
+        case "Leopard":
+            document.querySelector('#answer-img').innerHTML = "<img src=" + "assets/images/sharks/leopard.jpg" + ">";
+            break; 
+        case "Zebra":
+            document.querySelector('#answer-img').innerHTML = "<img src=" + "assets/images/sharks/zebra.jpg" + ">";
+            break; 
+
+    }
+}
+
+function loser() {
+    document.querySelector('#caption').innerHTML = "You lose! The answer was '" + chosenInfo.sharkName + " Shark'\nHere is another one.";
+    gameSet();
+}

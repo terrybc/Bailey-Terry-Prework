@@ -1,8 +1,8 @@
 body {
-    background-image: url('../images/ocean-background.jpg');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    background: url('../images/ocean-background.jpg')  no-repeat center center fixed;
     background-size: cover;
+    height: 100%;
+    overflow: hidden;
 }
 
 table {
@@ -14,11 +14,12 @@ table {
 tr, th, td, p {
     text-align: center;
     color: white;
-    font-weight: bold;
+    border-left: 2pt dashed navy;
 }
 
 p {
-    font-size: 18pt;
+    font-size: 16pt;
+    font-family: 'Anton', sans-serif;
 }
 
 td {
@@ -27,25 +28,32 @@ td {
 }
 
 #caption {
-    font-size: 24pt;
+    font-size: 20pt;
     color: oldlace;
     text-align: center;
     caption-side: top;
+    font-family: 'Anton', sans-serif;
 }
 
 #title {
     text-align: center;
-    font-size: 48pt;
+    font-size: 58pt;
     color: mediumblue;
+    font-family: 'Anton', sans-serif;
 }
 
 #theme {
     text-align: center;
-    font-size: 36pt;
+    font-size: 30pt;
     color: mediumblue;
+    font-family: 'Anton', sans-serif;
 }
 
 img {
-    height: 40%;
-    width: 40%;
+    height: 45%;
+    width: 45%;
+}
+
+.container {
+    margin-bottom: 5%;
 }
